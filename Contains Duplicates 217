@@ -1,1 +1,55 @@
+#BRUTEFORCE
+#Approach
+Use two loops: The outer loop picks a number, and the inner loop compares it with the rest.
+If a duplicate is found, return true.
+If no duplicates are found after both loops finish executing, return false.
+#iterate through two loops and check if the other numbers are same.
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        n= len(nums)
+        for i in range(n):
+            for j in range(i+1, n):
+                if nums[i]==nums[j]:
+                     return True
+        return False
+
+
+#SORTING
+#Approach:
+Sort the list.
+Traverse the list and compare each number with its next neighbor.
+If you find two adjacent numbers that are the same, return true (because you've found a duplicate).
+If you finish traversing the list without finding duplicates, return false.
+#sort  the nums and check if the adjacent of the number is same
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
+        for i in range(len(nums)-1):
+            if nums[i]==nums[i+1]:
+                return True
+        return False
+
+#Hashmap
+#use set and then traverese array and check if we aree seeing that num in set
+#approach
+Initialize an empty set.
+Traverse the list of numbers.
+For each number:
+If the number is in the set, return true.
+Otherwise, add the number to the set.
+If the loop completes without finding a duplicate, return false.
+
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        
+        seen =set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
+
 
